@@ -15,14 +15,14 @@ describe LandmarksController do
   it "allows you to view form to create a new landmark" do
     visit '/landmarks/new'
     expect(page.body).to include('<form')
-    expect(page.body).to include('landmark[name]')
-    expect(page.body).to include('landmark[year_completed]')
+    expect(page.body).to include('name')
+    expect(page.body).to include('year_completed')
   end
 
   it "allows you to create a new landmark" do
     visit '/landmarks/new'
-    fill_in :landmark_name, :with => "Arc de Triomphe"
-    fill_in :landmark_year_completed, :with => 1806
+    fill_in :name, :with => "Arc de Triomphe"
+    fill_in :year_completed, :with => 1806
     click_button "Create New Landmark"
     expect(Landmark.all.count).to eq(2)
   end
@@ -62,8 +62,8 @@ describe LandmarksController do
     @original_landmark = Landmark.first
 
     visit "/landmarks/#{@original_landmark.id}/edit"
-    fill_in :name, with: "BQE!!!!"
-    fill_in :year_completed, with: 9999
+    fill_in :"landmark[name]", with: "BQE!!!!"
+    fill_in :"landmark[year_completed]", with: 9999
     click_button "Edit Landmark"
 
     expect(page.body).to include("BQE!!!!")

@@ -28,8 +28,8 @@ describe FiguresController do
 
   it "allows you to create a new figure with a title" do
     visit '/figures/new'
-    fill_in :figure_name, :with => "Doctor Who"
-    check "title_#{Title.first.id}"
+    fill_in :"figure[name]", :with => "Doctor Who"
+    check "figure[title_ids][]"
     click_button "Create New Figure"
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
@@ -39,8 +39,8 @@ describe FiguresController do
 
   it "allows you to create a new figure with a landmark" do
     visit '/figures/new'
-    fill_in :figure_name, :with => "Doctor Who"
-    check "landmark_#{Landmark.first.id}"
+    fill_in :"figure[name]", :with => "Doctor Who"
+    check "figure[landmark_ids][]"
     click_button "Create New Figure"
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
@@ -50,8 +50,8 @@ describe FiguresController do
 
    it "allows you to create a new figure with a new title" do
     visit '/figures/new'
-    fill_in :figure_name, :with => "Doctor Who"
-    fill_in :new_title, :with => "Time Lord"
+    fill_in :"figure[name]", :with => "Doctor Who"
+    fill_in :"title[name]", :with => "Time Lord"
     click_button "Create New Figure"
     figure = Figure.last
     title = Title.last
@@ -63,8 +63,8 @@ describe FiguresController do
 
   it "allows you to create a new figure with a new landmark" do
     visit '/figures/new'
-    fill_in :figure_name, :with => "Doctor Who"
-    fill_in :new_landmark, :with => "The Tardis"
+    fill_in :"figure[name]", :with => "Doctor Who"
+    fill_in :"landmark[name]", :with => "The Tardis"
     click_button "Create New Figure"
     figure = Figure.last
     landmark = Landmark.last
@@ -117,8 +117,8 @@ describe FiguresController do
   it "allows you to edit a single figure" do
     @original_figure = Figure.first
     visit "/figures/#{@original_figure.id}/edit"
-    fill_in :figure_name, with: "Missy"
-    fill_in :new_landmark, with: "Big Tower"
+    fill_in :"figure[name]", with: "Missy"
+    fill_in :"landmark[name]", with: "Big Tower"
     click_button "Edit Figure"
 
     expect(page.current_path).to eq("/figures/#{@original_figure.id}")

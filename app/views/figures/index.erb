@@ -1,6 +1,11 @@
 <h2>All Figures</h2>
 
-<!-- add content here -->
-
+<ol>
+    <%@figures.each do |each_figure|%>
+        <li><a href="/figures/<%= each_figure.id %>"><%="#{each_figure.name}"%></a></li>
+    <%end%>
+</ol>
+<a class="button" href="/figures/new">Add a Figure</a>
+<br>
 <a class="button" href="/landmarks">Landmarks</a>
 <a class="button" href="/">Home</a>

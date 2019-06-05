@@ -2,9 +2,10 @@
 
 <ol>
     <%@landmarks.each do |each_landmark|%>
-        <li><%="Name: #{each_landmark.name}, Year Completed: #{each_landmark.year_completed}" %></li>
+        <li><a href="/landmarks/<%= each_landmark.id %>"><%="#{each_landmark.name} - #{each_landmark.year_completed}"%></a></li>
     <%end%>
 </ol>
-
+<a class="button" href="/landmarks/new">Add a Landmark</a>
+<br>
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>

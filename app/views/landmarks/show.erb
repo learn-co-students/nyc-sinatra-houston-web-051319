@@ -1,13 +1,30 @@
-<table>
+<style>
+  .text-center{
+    text-align: center;
+  }
+  td{
+    border: 2px solid black;
+  }
+</style>
+
+<table class="text-center">
+
   <tr>
     <th>Name</th>
     <th>Year Completed</th>
+    <th>Figure</th>
   </tr>
   <tr>
     <td><%= @landmark.name %></td>
     <td><%= @landmark.year_completed %></td>
+    <%begin%>
+    <td><%= @landmark.figure.name %></td>
+    <%rescue%>
+    <%end%>
   </tr>
+  
 <table>
 
-<a class="button" href="/landmarks/<%= @landmark.id %>/edit">Edit Landmark</a>
+
+<a class="button" href="/landmarks/<%= @landmark.id %>/edit">Edit Landmark</a><br>
 <a class="button" href="/landmarks">Landmarks</a>
