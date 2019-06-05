@@ -69,3 +69,13 @@ title_list.each do |name, figure_hash|
   p.name = name
   p.save
 end
+
+FigureTitle.create(title_id: 3, figure_id: 2)
+FigureTitle.create(title_id: 3, figure_id: 3)
+FigureTitle.create(title_id: 2, figure_id: 3)
+FigureTitle.create(title_id: 1, figure_id: 9)
+FigureTitle.create(title_id: 4, figure_id: 1)
+
+Landmark.all.each do |each_landmark|
+  each_landmark.update(figure_id: Figure.all.sample.id)
+end
